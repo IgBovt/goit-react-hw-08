@@ -1,0 +1,10 @@
+.title {
+  margin-left: 120px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.loader {
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}

@@ -1,0 +1,21 @@
+.input {
+  margin-top: 8px;
+  width: 320px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px rgb(175, 174, 174) solid;
+  padding-left: 8px;
+  transition: border 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input:hover,
+.input:focus {
+  border: 1px rgb(95, 95, 95) solid;
+}
+.container {
+  margin-bottom: 20px;
+  margin-left: 120px;
+}
+.text {
+  font-size: 20px;
+  line-height: 0.8;
+}

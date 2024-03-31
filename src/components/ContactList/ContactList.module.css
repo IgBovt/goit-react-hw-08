@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 12px 10px;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+.text {
+  text-align: center;
+  margin-top: 64px;
+}
