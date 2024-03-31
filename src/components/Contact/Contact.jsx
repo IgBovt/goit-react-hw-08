@@ -1,10 +1,10 @@
-import { deleteContact } from '../../redux/contactsOps';
+import { deleteContact } from '../../redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaPhoneVolume } from 'react-icons/fa';
 import css from './Contact.module.css';
-import { deleteToast, deleteErrToast } from '../../toasts';
+import { deleteToast, deleteErrToast } from '../../js/toasts';
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();

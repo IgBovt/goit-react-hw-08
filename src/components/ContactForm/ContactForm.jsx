@@ -1,13 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
-import { selectContacts } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contacts/operations';
+import { selectContacts } from '../../redux/contacts/slice';
 import { IoIosPersonAdd } from 'react-icons/io';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './ContactForm.module.css';
-import { notify, addContactToast, addContactErrToast } from '../../toasts';
+import { notify, addContactToast, addContactErrToast } from '../../js/toasts';
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
