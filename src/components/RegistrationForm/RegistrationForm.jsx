@@ -1,11 +1,16 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import * as Yup from 'yup';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
+import css from './RegistrationForm.module.css';
 
 const FeedbackSchema = Yup.object().shape({
-  email: Yup.string()
+  name: Yup.string()
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
+    .required('Fill this field'),
+  email: Yup.string()
+    .email('Invalid email address')
     .required('Fill this field'),
   password: Yup.string()
     .min(6, 'Too Short!')
@@ -16,36 +21,88 @@ const FeedbackSchema = Yup.object().shape({
     .required('Fill this field'),
 });
 
-export default function LoginForm() {
+export default function RegistrationForm() {
+  const [showForm, setShowForm] = useState(true);
+
+  const handleModalClose = e => {
+    if (e.target.classList.contains(css.overlay)) {
+      setShowForm(false);
+    }
+  };
+
+  const nameID = useId();
   const emailID = useId();
   const passwordID = useId();
 
-  const handleSubmit = () => {};
+  const handleSubmit = (values, actions) => {
+    console.log(values);
+    actions.resetForm();
+  };
+  const initialValue = { name: '', email: '', password: '' };
+
   return (
-    <Formik
-      initialValues=""
-      onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
-    >
-      <Form autoComplete="off">
-        <div>
-          <label htmlFor={emailID}>Email:</label>
-          <Field type="email" name="email" id={emailID}></Field>
-          <div>
-            <ErrorMessage name="number" as="span" />
-          </div>
-        </div>
+    showForm && (
+      <div className={css.overlay} onClick={handleModalClose}>
+        <Formik
+          initialValues={initialValue}
+          onSubmit={handleSubmit}
+          validationSchema={FeedbackSchema}
+        >
+          <Form className={css.form} autoComplete="off">
+            <h3>Please text your data</h3>
+            <button
+              type="button"
+              className={css.close}
+              onClick={() => setShowForm(false)}
+            >
+              <IoIosCloseCircleOutline className={css.icon} size={24} />
+            </button>
 
-        <div>
-          <label htmlFor={passwordID}>Password:</label>
-          <Field type="password" name="password" id={passwordID}></Field>
-          <div>
-            <ErrorMessage name="number" as="span" />
-          </div>
-        </div>
+            <div className={css.container}>
+              <label htmlFor={nameID}>Name:</label>
+              <Field
+                className={css.input}
+                type="text"
+                name="name"
+                id={nameID}
+              ></Field>
+              <div className={css.error}>
+                <ErrorMessage name="name" as="span" />
+              </div>
+            </div>
 
-        <button type="submit">Log in</button>
-      </Form>
-    </Formik>
+            <div className={css.container}>
+              <label htmlFor={emailID}>Email:</label>
+              <Field
+                className={css.input}
+                type="email"
+                name="email"
+                id={emailID}
+              ></Field>
+              <div className={css.error}>
+                <ErrorMessage name="email" as="span" />
+              </div>
+            </div>
+
+            <div className={css.container}>
+              <label htmlFor={passwordID}>Password:</label>
+              <Field
+                className={css.input}
+                type="password"
+                name="password"
+                id={passwordID}
+              ></Field>
+              <div className={css.error}>
+                <ErrorMessage name="password" as="span" />
+              </div>
+            </div>
+
+            <button className={css.btn} type="submit">
+              Log in
+            </button>
+          </Form>
+        </Formik>
+      </div>
+    )
   );
 }
