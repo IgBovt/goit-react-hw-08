@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
 import { selectError, selectLoading } from '../../redux/contacts/slice';
 import Layout from '../Layout/Layout';
-import ContactList from '../ContactList/ContactList';
 import SearchBox from '../SearchBox/SearchBox';
-import ContactForm from '../ContactForm/ContactForm';
 import css from './App.module.css';
 import { ToastContainer } from 'react-toastify';
 import { errToast } from '../../js/toasts';
@@ -35,8 +33,6 @@ export default function App() {
           <Route path="/contacts" element={<ContactsPage />} />
         </Routes>
       </Suspense>
-      <ContactForm />
-      <ContactList />
     </Layout>
   );
 }
