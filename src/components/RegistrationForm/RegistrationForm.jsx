@@ -64,6 +64,7 @@ export default function RegistrationForm() {
                 className={css.input}
                 type="text"
                 name="name"
+                placeholder="Name"
                 id={nameID}
               ></Field>
               <div className={css.error}>
@@ -77,6 +78,7 @@ export default function RegistrationForm() {
                 className={css.input}
                 type="email"
                 name="email"
+                placeholder="Email"
                 id={emailID}
               ></Field>
               <div className={css.error}>
@@ -90,6 +92,7 @@ export default function RegistrationForm() {
                 className={css.input}
                 type="password"
                 name="password"
+                placeholder="Password"
                 id={passwordID}
               ></Field>
               <div className={css.error}>
@@ -98,7 +101,7 @@ export default function RegistrationForm() {
             </div>
 
             <button className={css.btn} type="submit">
-              Log in
+              Registration
             </button>
           </Form>
         </Formik>

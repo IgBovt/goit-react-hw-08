@@ -27,7 +27,7 @@ export default function LoginForm() {
       <div className={css.overlay} onClick={handleModalClose}>
         <Formik initialValues={initialValue} onSubmit={handleSubmit}>
           <Form className={css.form} autoComplete="off">
-            <h3>Please log in</h3>
+            <h3 className={css.tittle}>Please log in</h3>
             <button
               type="button"
               className={css.close}
@@ -41,6 +41,7 @@ export default function LoginForm() {
                 className={css.input}
                 type="email"
                 name="email"
+                placeholder="Email"
                 id={emailID}
               ></Field>
             </div>
@@ -51,10 +52,11 @@ export default function LoginForm() {
                 className={css.input}
                 type="password"
                 name="password"
+                placeholder="Password"
                 id={passwordID}
               ></Field>
             </div>
-            <p>
+            <p className={css.text}>
               or <Link to="/register">register</Link>
             </p>
 
