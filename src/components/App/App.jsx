@@ -2,13 +2,9 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
-import { selectError, selectLoading } from '../../redux/contacts/slice';
+// import { selectError, selectLoading } from '../../redux/contacts/slice';
 import Layout from '../Layout/Layout';
-import SearchBox from '../SearchBox/SearchBox';
-import css from './App.module.css';
 import { ToastContainer } from 'react-toastify';
-import { errToast } from '../../js/toasts';
-import { Watch } from 'react-loader-spinner';
 
 const HomePage = lazy(() => import('../../pages/Home/Home'));
 const RegisterPage = lazy(() =>
@@ -16,6 +12,7 @@ const RegisterPage = lazy(() =>
 );
 const LoginPage = lazy(() => import('../../pages/Login/Login'));
 const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
+const NotFoundPage = lazy(() => import('../../pages/NotFound/NotFound'));
 
 export default function App() {
   // const loading = useSelector(selectLoading);
@@ -33,8 +30,10 @@ export default function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <ToastContainer />
     </Layout>
   );
 }
