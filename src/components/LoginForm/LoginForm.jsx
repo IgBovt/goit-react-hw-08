@@ -28,13 +28,9 @@ export default function LoginForm() {
         <Formik initialValues={initialValue} onSubmit={handleSubmit}>
           <Form className={css.form} autoComplete="off">
             <h3 className={css.tittle}>Please log in</h3>
-            <button
-              type="button"
-              className={css.close}
-              onClick={() => setShowForm(false)}
-            >
+            <Link className={css.close} to="/">
               <IoIosCloseCircleOutline className={css.icon} size={24} />
-            </button>
+            </Link>
             <div className={css.container}>
               <label htmlFor={emailID}>Email:</label>
               <Field

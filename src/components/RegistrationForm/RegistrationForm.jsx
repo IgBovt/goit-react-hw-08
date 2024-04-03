@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useId, useState } from 'react';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import css from './RegistrationForm.module.css';
@@ -50,13 +51,9 @@ export default function RegistrationForm() {
         >
           <Form className={css.form} autoComplete="off">
             <h3>Please text your data</h3>
-            <button
-              type="button"
-              className={css.close}
-              onClick={() => setShowForm(false)}
-            >
+            <Link className={css.close} to="/">
               <IoIosCloseCircleOutline className={css.icon} size={24} />
-            </button>
+            </Link>
 
             <div className={css.container}>
               <label htmlFor={nameID}>Name:</label>
