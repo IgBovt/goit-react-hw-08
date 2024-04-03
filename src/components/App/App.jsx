@@ -10,10 +10,12 @@ import { ToastContainer } from 'react-toastify';
 import { errToast } from '../../js/toasts';
 import { Watch } from 'react-loader-spinner';
 
-const HomePage = lazy(() => import('../../pages/Home'));
-const RegisterPage = lazy(() => import('../../pages/Registration'));
-const LoginPage = lazy(() => import('../../pages/Login'));
-const ContactsPage = lazy(() => import('../../pages/Contacts'));
+const HomePage = lazy(() => import('../../pages/Home/Home'));
+const RegisterPage = lazy(() =>
+  import('../../pages/Registration/Registration')
+);
+const LoginPage = lazy(() => import('../../pages/Login/Login'));
+const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
 
 export default function App() {
   // const loading = useSelector(selectLoading);
