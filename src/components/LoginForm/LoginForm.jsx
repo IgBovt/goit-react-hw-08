@@ -1,12 +1,13 @@
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useId, useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import css from './LoginForm.module.css';
 
 export default function LoginForm() {
   const [showForm, setShowForm] = useState(true);
-
+  // let history = useHistory();
   const handleModalClose = e => {
     if (e.target.classList.contains(css.overlay)) {
       setShowForm(false);
