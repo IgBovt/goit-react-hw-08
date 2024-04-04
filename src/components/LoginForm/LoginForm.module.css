@@ -20,6 +20,7 @@
   border: 1px rgb(175, 174, 174) solid;
   padding-left: 8px;
   transition: border 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 14px;
 }
 .input::placeholder {
   font-size: 12px;
