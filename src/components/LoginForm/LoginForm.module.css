@@ -76,6 +76,10 @@
 .close:hover {
   color: rgb(95, 95, 95);
 }
-/* .icon {
-  color: rgb(44, 44, 44);
-} */
+.btnDisable {
+  cursor: not-allowed;
+  background-color: #c8c8da;
+}
+.btnDisable:hover {
+  background-color: #c8c8da;
+}

@@ -1,17 +1,31 @@
 import { Formik, Form, Field } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectLoader } from '../../redux/auth/selectors';
 import { Link } from 'react-router-dom';
-import { LogIn } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operations';
 import { useId } from 'react';
+import { errToast } from '../../js/toasts';
+import clsx from 'clsx';
 import css from './LoginForm.module.css';
+
+const makeBtnClass = loading => {
+  return clsx(css.btn, loading && css.btnDisable);
+};
 
 export default function LoginForm() {
   const emailID = useId();
   const passwordID = useId();
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoader);
 
   const handleSubmit = (values, actions) => {
-    dispatch(LogIn(values));
+    dispatch(logIn(values))
+      .unwrap()
+      .then()
+      .catch(() => {
+        errToast();
+      });
+
     actions.resetForm();
   };
   const initialValue = { email: '', password: '' };
@@ -44,7 +58,7 @@ export default function LoginForm() {
           or <Link to="/register">register</Link>
         </p>
 
-        <button className={css.btn} type="submit">
+        <button className={makeBtnClass(loading)} type="submit">
           Log in
         </button>
       </Form>

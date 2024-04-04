@@ -54,7 +54,6 @@ export default function RegistrationForm() {
       .then()
       .catch(() => {
         errToast();
-        return;
       });
     actions.resetForm();
   };

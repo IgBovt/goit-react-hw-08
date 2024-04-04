@@ -19,3 +19,10 @@
 .btn:hover {
   color: #8280ee;
 }
+.btnDisable {
+  cursor: not-allowed;
+  color: #c8c8da;
+}
+.btnDisable:hover {
+  color: #c8c8da;
+}
