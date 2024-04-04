@@ -1,13 +1,15 @@
 .container {
   min-width: 292px;
-  height: 112px;
+  height: 96px;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   padding: 16px;
   border-radius: 8px;
   background-color: white;
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  gap: 16px;
 }
 .container:hover {
   transform: scale(1.02);
@@ -31,28 +33,24 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.btn,
-.btnEdit {
+.btn {
   display: flex;
-  width: 20px;
+  width: 50px;
   height: 20px;
   background-color: transparent;
   border: none;
   color: grey;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   padding: 0;
   cursor: pointer;
   margin-left: auto;
   margin-right: auto;
-
+  text-align: end;
   transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn:hover {
-  color: red;
-}
-.btnEdit:hover {
-  color: #322fd4;
+  color: black;
 }
 .icon {
   margin-right: 8px;
@@ -61,13 +59,39 @@
 .phoneContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 20px;
+  align-items: end;
+  justify-content: end;
 }
 .line {
   border: 0.1px rgb(217, 216, 218) solid;
 }
 .btnContainer {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 4px;
   justify-content: end;
+  align-items: end;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.btnArrow {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: 20px;
+  color: grey;
+  width: 30px;
+  height: 30px;
+}
+.btnArrow:hover {
+  color: black;
 }
