@@ -27,21 +27,24 @@ export default function Contact({ id, name, number }) {
         </a>
       </div>
       <hr className={css.line} />
-      <button
-        className={css.btn}
-        onClick={() => {
-          dispatch(deleteContact(id))
-            .unwrap()
-            .then(() => {
-              deleteToast(name);
-            })
-            .catch(() => {
-              deleteErrToast();
-            });
-        }}
-      >
-        Delete
-      </button>
+      <div className={css.btnContainer}>
+        <button className={css.btnEdit}>Edit</button>
+        <button
+          className={css.btn}
+          onClick={() => {
+            dispatch(deleteContact(id))
+              .unwrap()
+              .then(() => {
+                deleteToast(name);
+              })
+              .catch(() => {
+                deleteErrToast();
+              });
+          }}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

@@ -31,7 +31,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.btn {
+.btn,
+.btnEdit {
   display: flex;
   width: 20px;
   height: 20px;
@@ -50,6 +51,9 @@
 .btn:hover {
   color: red;
 }
+.btnEdit:hover {
+  color: #322fd4;
+}
 .icon {
   margin-right: 8px;
   color: #808080;
@@ -61,4 +65,9 @@
 }
 .line {
   border: 0.1px rgb(217, 216, 218) solid;
+}
+.btnContainer {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
 }
