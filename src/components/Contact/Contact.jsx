@@ -5,7 +5,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaPhoneVolume } from 'react-icons/fa';
 import { deleteToast, deleteErrToast } from '../../js/toasts';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { IoIosMore } from 'react-icons/io';
 import css from './Contact.module.css';
 
 export default function Contact({ id, name, number }) {
@@ -16,7 +16,6 @@ export default function Contact({ id, name, number }) {
   };
   return (
     <div className={css.container}>
-      {/* <div className={css.phoneContainer}> */}
       <div>
         <p>
           <FaUserAlt className={css.icon} size={14} />
@@ -31,14 +30,13 @@ export default function Contact({ id, name, number }) {
       <a className={css.phoneLink} href={`tel:${number}`}>
         <FaPhoneVolume className={css.phoneIcon} size={20} />
       </a>
-      {/* </div> */}
       <div className={css.wrapper}>
         <button
           className={css.btnArrow}
           type="button"
           onClick={handleEditClick}
         >
-          {showBtn ? <IoIosArrowUp /> : <IoIosArrowDown />}
+          <IoIosMore />
         </button>
         {showBtn && (
           <div className={css.btnContainer}>
