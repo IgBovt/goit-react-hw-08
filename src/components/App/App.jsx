@@ -5,6 +5,7 @@ import { fetchContacts } from '../../redux/contacts/operations';
 // import { selectError, selectLoading } from '../../redux/contacts/slice';
 import Layout from '../Layout/Layout';
 import { ToastContainer } from 'react-toastify';
+import { refreshUser } from '../../redux/auth/operations';
 
 const HomePage = lazy(() => import('../../pages/Home/Home'));
 const RegisterPage = lazy(() =>
@@ -15,11 +16,9 @@ const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
 const NotFoundPage = lazy(() => import('../../pages/NotFound/NotFound'));
 
 export default function App() {
-  // const loading = useSelector(selectLoading);
-  // const error = useSelector(selectError);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (
