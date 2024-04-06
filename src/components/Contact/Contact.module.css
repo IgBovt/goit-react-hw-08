@@ -3,13 +3,15 @@
   height: 96px;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 16px;
   border-radius: 8px;
   background-color: white;
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  padding-right: 48px;
 }
 .container:hover {
   transform: scale(1.02);
@@ -56,16 +58,16 @@
   margin-right: 8px;
   color: #808080;
 }
-.phoneContainer {
+/* .phoneContainer {
   display: flex;
   flex-direction: row;
   gap: 20px;
   align-items: end;
   justify-content: end;
-}
-.line {
+} */
+/* .line {
   border: 0.1px rgb(217, 216, 218) solid;
-}
+} */
 .btnContainer {
   display: flex;
   flex-direction: column;
@@ -87,7 +89,7 @@
   top: 8px;
   right: 8px;
 }
-.btnArrow {
+.btnMore {
   cursor: pointer;
   background-color: transparent;
   border: none;

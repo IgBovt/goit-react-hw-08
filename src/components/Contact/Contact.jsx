@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaPhoneVolume } from 'react-icons/fa';
+import { formatPhoneNumber } from '../../js/formatPhoneNumber';
 import { deleteToast, deleteErrToast } from '../../js/toasts';
 import { IoIosMore } from 'react-icons/io';
 import css from './Contact.module.css';
@@ -23,7 +24,7 @@ export default function Contact({ id, name, number }) {
         </p>
         <p>
           <FaPhoneAlt className={css.icon} size={14} />
-          {number}
+          {formatPhoneNumber(number)}
         </p>
       </div>
 
@@ -31,11 +32,7 @@ export default function Contact({ id, name, number }) {
         <FaPhoneVolume className={css.phoneIcon} size={20} />
       </a>
       <div className={css.wrapper}>
-        <button
-          className={css.btnArrow}
-          type="button"
-          onClick={handleEditClick}
-        >
+        <button className={css.btnMore} type="button" onClick={handleEditClick}>
           <IoIosMore />
         </button>
         {showBtn && (
