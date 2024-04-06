@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
-import { selectContacts } from '../../redux/contacts/slice';
+import { selectAllContacts } from '../../redux/contacts/selectors';
 import { IoIosPersonAdd } from 'react-icons/io';
 import { useId } from 'react';
 import * as Yup from 'yup';
@@ -23,7 +23,7 @@ const initialValues = { name: '', number: '' };
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const contacts = useSelector(selectAllContacts);
 
   const nameID = useId();
   const numberID = useId();
