@@ -8,7 +8,9 @@ import PrivateRoute from '../PrivateRoute/PrivateRout';
 import RestrictedRoute from '../RestrictedRoute/RestrictedRoute';
 import { fetchContacts } from '../../redux/contacts/operations';
 import { ToastContainer } from 'react-toastify';
+import { Watch } from 'react-loader-spinner';
 import 'react-toastify/dist/ReactToastify.css';
+import css from './App.module.css';
 
 const HomePage = lazy(() => import('../../pages/Home/Home'));
 const RegisterPage = lazy(() =>
@@ -26,7 +28,16 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user, please wait...</b>
+    <Watch
+      visible={true}
+      height="32"
+      width="32"
+      radius="48"
+      color="#322fd4"
+      ariaLabel="watch-loading"
+      wrapperStyle={{}}
+      wrapperClass={css.loader}
+    />
   ) : (
     <Layout>
       <Suspense fallback={null}>
