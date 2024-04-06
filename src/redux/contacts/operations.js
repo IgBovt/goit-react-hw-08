@@ -47,7 +47,6 @@ export const editContact = createAsyncThunk(
         name: updContact.name,
         number: updContact.number,
       });
-      console.log(updContact.id);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
