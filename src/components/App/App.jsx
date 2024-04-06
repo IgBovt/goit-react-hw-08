@@ -1,11 +1,14 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/contacts/operations';
-// import { selectError, selectLoading } from '../../redux/contacts/slice';
-import Layout from '../Layout/Layout';
-import { ToastContainer } from 'react-toastify';
 import { refreshUser } from '../../redux/auth/operations';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
+import Layout from '../Layout/Layout';
+import PrivateRoute from '../PrivateRoute/PrivateRout';
+import RestrictedRoute from '../RestrictedRoute/RestrictedRoute';
+import { fetchContacts } from '../../redux/contacts/operations';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = lazy(() => import('../../pages/Home/Home'));
 const RegisterPage = lazy(() =>
@@ -16,19 +19,31 @@ const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
 const NotFoundPage = lazy(() => import('../../pages/NotFound/NotFound'));
 
 export default function App() {
+  const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user, please wait...</b>
+  ) : (
     <Layout>
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route
+            path="/register"
+            element={<RestrictedRoute component={<RegisterPage />} />}
+          />
+          <Route
+            path="/login"
+            element={<RestrictedRoute component={<LoginPage />} />}
+          />
+          <Route
+            path="/contacts"
+            element={<PrivateRoute component={<ContactsPage />} />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

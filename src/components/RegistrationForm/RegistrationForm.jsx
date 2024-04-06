@@ -6,7 +6,6 @@ import { useId } from 'react';
 import { errToast } from '../../js/toasts';
 import * as Yup from 'yup';
 import clsx from 'clsx';
-import 'react-toastify/dist/ReactToastify.css';
 import css from './RegistrationForm.module.css';
 
 const FeedbackSchema = Yup.object().shape({
