@@ -20,7 +20,7 @@ const FeedbackSchema = Yup.object().shape({
     .min(6, 'Too Short!')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$,.\-])[a-zA-Z\d@#$,.\\-]{6,}$/,
-      'Your password must include one capital letеer, small letter and number'
+      'Your password must include one capital letеer, small letter and number and special symbol'
     )
     .required('Fill this field'),
   repeatPassword: Yup.string()
