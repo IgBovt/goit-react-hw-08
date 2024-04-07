@@ -1,36 +1,32 @@
-import { deleteContact } from '../../redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteToast, deleteErrToast } from '../../js/toasts';
-import { selectLoading } from '../../redux/contacts/selectors';
+import { logOut } from '../../redux/auth/operations';
+import { errToast } from '../../js/toasts';
+import { selectLoader } from '../../redux/auth/selectors';
 import clsx from 'clsx';
-import css from './DeleteModal.module.css';
+import css from './LogOutModal.module.css';
 
-export default function DeleteModal({ name, id, onClose }) {
+export default function LogOutModal({ onClose }) {
   const dispatch = useDispatch();
-  const loading = useSelector(selectLoading);
+  const loading = useSelector(selectLoader);
 
   const makeBtnClass = loading => {
-    return clsx(css.btnDelete, loading && css.btnDisable);
+    return clsx(css.btnLogout, loading && css.btnDisable);
   };
 
   return (
     <div className={css.backdrop}>
       <div className={css.container}>
-        <p>
-          Are you sure you want to delete contact <b>{name}</b>?
-        </p>
+        <p>Are you sure you want to LogOut?</p>
         <div className={css.btnContainer}>
           <button
             className={makeBtnClass(loading)}
             type="button"
             onClick={() => {
-              dispatch(deleteContact(id))
+              dispatch(logOut())
                 .unwrap()
-                .then(() => {
-                  deleteToast(name);
-                })
+                .then()
                 .catch(() => {
-                  deleteErrToast();
+                  errToast();
                 });
             }}
           >

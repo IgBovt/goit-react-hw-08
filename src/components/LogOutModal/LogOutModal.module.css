@@ -44,7 +44,7 @@
 .btn:hover {
   background-color: #5957d4;
 }
-.btnDelete {
+.btnLogout {
   cursor: pointer;
   color: white;
   margin-top: 12px;
