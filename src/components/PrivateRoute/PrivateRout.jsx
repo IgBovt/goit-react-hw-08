@@ -6,3 +6,12 @@ export default function PrivateRout({ component: Component }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return isLoggedIn ? Component : <Navigate to="/login" />;
 }
+
+// export const PrivateRoute = ({
+//   component: Component,
+//   redirectTo = '/login',
+// }) => {
+//   const isLoggedIn = useSelector(selectIsLoggedIn);
+
+//   return isLoggedIn ? Component : <Navigate to={redirectTo} />;
+// };

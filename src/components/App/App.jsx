@@ -53,7 +53,9 @@ export default function App() {
           />
           <Route
             path="/contacts"
-            element={<PrivateRoute component={<ContactsPage />} />}
+            element={
+              <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
+            }
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
