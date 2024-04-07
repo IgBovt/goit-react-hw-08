@@ -1,13 +1,22 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { editContact } from '../../redux/contacts/operations';
-import { selectAllContacts } from '../../redux/contacts/selectors';
+import {
+  selectAllContacts,
+  selectLoading,
+} from '../../redux/contacts/selectors';
 import { IoIosPersonAdd } from 'react-icons/io';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './EditModal.module.css';
-import { notify, addContactToast, addContactErrToast } from '../../js/toasts';
+import {
+  notify,
+  addContactToast,
+  addContactErrToast,
+  editContactToast,
+  errToast,
+} from '../../js/toasts';
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,7 +36,10 @@ export default function EditModal({ id, name, number, onClose }) {
   const numberID = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(editContact({ id: id, name: values.name, number: values.number }));
+    dispatch(editContact({ id: id, name: values.name, number: values.number }))
+      .unwrap()
+      .then(() => editContactToast())
+      .catch(() => errToast());
     actions.resetForm();
     onClose();
   };

@@ -50,14 +50,17 @@ const slice = createSlice({
       })
       .addCase(editContact.pending, state => {
         state.error = false;
+        state.loading = true;
       })
       .addCase(editContact.fulfilled, (state, action) => {
         state.items = state.items.map(item =>
           item.id === action.payload.id ? action.payload : item
         );
+        state.loading = false;
       })
       .addCase(editContact.rejected, state => {
         state.error = true;
+        state.loading = false;
       })
       .addCase(logOut.fulfilled, state => {
         state.items = [];

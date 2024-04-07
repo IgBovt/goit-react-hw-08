@@ -81,3 +81,10 @@
 .rulesLink {
   margin-left: 8px;
 }
+.btnDisable {
+  cursor: not-allowed;
+  background-color: #c8c8da;
+}
+.btnDisable:hover {
+  background-color: #c8c8da;
+}
