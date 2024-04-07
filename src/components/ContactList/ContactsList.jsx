@@ -5,12 +5,15 @@ import { filteredContacts } from '../../redux/contacts/slice';
 
 export default function ContactList() {
   const contacts = useSelector(filteredContacts);
+  const sortedContacts = contacts
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
 
-  return contacts.length === 0 ? (
+  return sortedContacts.length === 0 ? (
     <p className={css.text}>We haven`t found any contacts</p>
   ) : (
     <ul className={css.list}>
-      {contacts.map(({ name, number, id }) => (
+      {sortedContacts.map(({ name, number, id }) => (
         <li key={id}>
           <Contact name={name} number={number} id={id} />
         </li>

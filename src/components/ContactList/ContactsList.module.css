@@ -4,6 +4,7 @@
   gap: 12px 10px;
   flex-wrap: wrap;
   justify-content: start;
+  margin-bottom: 60px;
 }
 .text {
   text-align: center;

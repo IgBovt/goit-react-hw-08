@@ -9,11 +9,12 @@ import { deleteToast, deleteErrToast } from '../../js/toasts';
 import { IoIosMore } from 'react-icons/io';
 import css from './Contact.module.css';
 import EditModal from '../EditModal/EditModal';
+import DeleteModal from '../DeleteModal/DeleteModal';
 
 export default function Contact({ id, name, number }) {
-  const dispatch = useDispatch();
   const [showBtn, setShowBtn] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const handleEditClick = () => {
     setShowBtn(!showBtn);
@@ -22,6 +23,14 @@ export default function Contact({ id, name, number }) {
   const handleEditModal = () => {
     setIsOpenModal(!isOpenModal);
     setShowBtn(false);
+  };
+
+  const handleDeleteModal = () => {
+    setIsOpenDeleteModal(!isOpenDeleteModal);
+  };
+  const handleDeleteModalClose = () => {
+    setShowBtn(!showBtn);
+    setIsOpenDeleteModal(false);
   };
 
   return (
@@ -54,19 +63,7 @@ export default function Contact({ id, name, number }) {
               <button className={css.btn} onClick={handleEditModal}>
                 Edit
               </button>
-              <button
-                className={css.btn}
-                onClick={() => {
-                  dispatch(deleteContact(id))
-                    .unwrap()
-                    .then(() => {
-                      deleteToast(name);
-                    })
-                    .catch(() => {
-                      deleteErrToast();
-                    });
-                }}
-              >
+              <button className={css.btn} onClick={handleDeleteModal}>
                 Delete
               </button>
             </div>
@@ -80,6 +77,9 @@ export default function Contact({ id, name, number }) {
           number={number}
           onClose={handleEditModal}
         />
+      )}
+      {isOpenDeleteModal && (
+        <DeleteModal id={id} name={name} onClose={handleDeleteModalClose} />
       )}
     </>
   );

@@ -18,7 +18,10 @@ export default function Contacts() {
 
   return (
     <div>
-      {/* {isLoading && (
+      <ContactForm />
+      <SearchBox />
+
+      {isLoading && (
         <Watch
           visible={true}
           height="32"
@@ -29,9 +32,7 @@ export default function Contacts() {
           wrapperStyle={{}}
           wrapperClass={css.loader}
         />
-      )} */}
-      <ContactForm />
-      <SearchBox />
+      )}
       <ContactList />
     </div>
   );
