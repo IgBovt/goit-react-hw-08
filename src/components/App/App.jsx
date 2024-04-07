@@ -23,6 +23,7 @@ const NotFoundPage = lazy(() => import('../../pages/NotFound/NotFound'));
 export default function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
