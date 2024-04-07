@@ -1,13 +1,21 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
-import { selectAllContacts } from '../../redux/contacts/selectors';
+import {
+  selectAllContacts,
+  selectLoading,
+} from '../../redux/contacts/selectors';
 import { IoIosPersonAdd } from 'react-icons/io';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './ContactForm.module.css';
+import clsx from 'clsx';
 import { notify, addContactToast, addContactErrToast } from '../../js/toasts';
+
+const makeBtnClass = loading => {
+  return clsx(css.btn, loading && css.btnDisable);
+};
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,6 +31,7 @@ const initialValues = { name: '', number: '' };
 
 export default function ContactForm() {
   const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
   const contacts = useSelector(selectAllContacts);
 
   const nameID = useId();
@@ -79,7 +88,7 @@ export default function ContactForm() {
               <ErrorMessage name="number" as="span" />
             </div>
           </div>
-          <button type="submit" className={css.btn}>
+          <button type="submit" className={makeBtnClass(loading)}>
             <IoIosPersonAdd className={css.icon} size={20} />
             Add contact
           </button>

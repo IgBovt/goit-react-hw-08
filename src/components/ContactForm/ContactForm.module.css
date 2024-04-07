@@ -51,3 +51,10 @@
 .line {
   margin: 40px 120px;
 }
+.btnDisable {
+  cursor: not-allowed;
+  background-color: #c8c8da;
+}
+.btnDisable:hover {
+  background-color: #c8c8da;
+}

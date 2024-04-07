@@ -32,12 +32,15 @@ const slice = createSlice({
       })
       .addCase(addContact.pending, state => {
         state.error = false;
+        state.loading = true;
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.items.push(action.payload);
+        state.loading = false;
       })
       .addCase(addContact.rejected, state => {
         state.error = true;
+        state.loading = false;
       })
       .addCase(deleteContact.pending, state => {
         state.error = false;
