@@ -1,22 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { editContact } from '../../redux/contacts/operations';
-import {
-  selectAllContacts,
-  selectLoading,
-} from '../../redux/contacts/selectors';
 import { IoIosPersonAdd } from 'react-icons/io';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import 'react-toastify/dist/ReactToastify.css';
 import css from './EditModal.module.css';
-import {
-  notify,
-  addContactToast,
-  addContactErrToast,
-  editContactToast,
-  errToast,
-} from '../../js/toasts';
+import { editContactToast, errToast } from '../../js/toasts';
+import { IoCloseCircleOutline } from 'react-icons/io5';
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -35,6 +26,12 @@ export default function EditModal({ id, name, number, onClose }) {
   const nameID = useId();
   const numberID = useId();
 
+  const handleClose = e => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   const handleSubmit = (values, actions) => {
     dispatch(editContact({ id: id, name: values.name, number: values.number }))
       .unwrap()
@@ -45,13 +42,21 @@ export default function EditModal({ id, name, number, onClose }) {
   };
 
   return (
-    <div className={css.backdrop}>
+    <div
+      className={css.backdrop}
+      onClick={e => {
+        handleClose(e);
+      }}
+    >
       <Formik
         initialValues={{ name: name, number: number }}
         onSubmit={handleSubmit}
         validationSchema={FeedbackSchema}
       >
-        <Form className={css.form}>
+        <Form className={css.form} onClick={e => e.stopPropagation()}>
+          <button className={css.closeBtn} type="button" onClick={onClose}>
+            <IoCloseCircleOutline />
+          </button>
           <div className={css.container}>
             <label className={css.label} htmlFor={nameID}>
               Name:

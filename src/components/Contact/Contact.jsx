@@ -27,9 +27,9 @@ export default function Contact({ id, name, number }) {
 
   const handleDeleteModal = () => {
     setIsOpenDeleteModal(!isOpenDeleteModal);
+    setShowBtn(false);
   };
   const handleDeleteModalClose = () => {
-    setShowBtn(!showBtn);
     setIsOpenDeleteModal(false);
   };
 

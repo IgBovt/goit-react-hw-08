@@ -15,6 +15,7 @@
   background-color: rgb(232, 238, 246);
   padding: 20px;
   border-radius: 8px;
+  position: relative;
 }
 .input {
   width: 250px;
@@ -65,4 +66,19 @@
 }
 .line {
   margin: 40px 120px;
+}
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  font-size: 28px;
+  color: rgb(175, 174, 174);
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.closeBtn:hover {
+  color: rgb(95, 95, 95);
 }
