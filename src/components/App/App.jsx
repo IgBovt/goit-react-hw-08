@@ -75,22 +75,3 @@ export default function App() {
     </Layout>
   );
 }
-
-// <ContactForm />
-// <SearchBox />
-// <ContactList />
-// {loading && (
-//   <Watch
-//     visible={true}
-//     height="32"
-//     width="32"
-//     radius="48"
-//     color="#808080"
-//     ariaLabel="watch-loading"
-//     wrapperStyle={{}}
-//     wrapperClass={css.loader}
-//   />
-// )}
-
-// <ToastContainer />
-// {error && errToast()}
