@@ -23,7 +23,7 @@ const NotFoundPage = lazy(() => import('../../pages/NotFound/NotFound'));
 export default function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -46,11 +46,21 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route
             path="/register"
-            element={<RestrictedRoute component={<RegisterPage />} />}
+            element={
+              <RestrictedRoute
+                component={<RegisterPage />}
+                redirectTo="/contacts"
+              />
+            }
           />
           <Route
             path="/login"
-            element={<RestrictedRoute component={<LoginPage />} />}
+            element={
+              <RestrictedRoute
+                component={<LoginPage />}
+                redirectTo="/contacts"
+              />
+            }
           />
           <Route
             path="/contacts"
