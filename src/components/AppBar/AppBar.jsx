@@ -8,11 +8,9 @@ import css from './AppBar.module.css';
 export default function AppBar() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <>
-      <header className={css.header}>
-        <Navigation />
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      </header>
-    </>
+    <header className={css.header}>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    </header>
   );
 }

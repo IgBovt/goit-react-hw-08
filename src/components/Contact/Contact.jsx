@@ -1,37 +1,35 @@
-import { deleteContact } from '../../redux/contacts/operations';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useCallback } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaPhoneVolume } from 'react-icons/fa';
 import { formatPhoneNumber } from '../../js/formatPhoneNumber';
-import { deleteToast, deleteErrToast } from '../../js/toasts';
-import { IoIosMore } from 'react-icons/io';
-import css from './Contact.module.css';
 import EditModal from '../EditModal/EditModal';
 import DeleteModal from '../DeleteModal/DeleteModal';
+import { IoIosMore } from 'react-icons/io';
+import css from './Contact.module.css';
 
 export default function Contact({ id, name, number }) {
   const [showBtn, setShowBtn] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
-  const handleEditClick = () => {
-    setShowBtn(!showBtn);
-  };
+  const handleEditClick = useCallback(() => {
+    setShowBtn(prevState => !prevState);
+  }, []);
 
-  const handleEditModal = () => {
-    setIsOpenModal(!isOpenModal);
+  const handleEditModal = useCallback(() => {
+    setIsOpenModal(prevState => !prevState);
     setShowBtn(false);
-  };
+  }, []);
 
-  const handleDeleteModal = () => {
-    setIsOpenDeleteModal(!isOpenDeleteModal);
+  const handleDeleteModal = useCallback(() => {
+    setIsOpenDeleteModal(prevState => !prevState);
     setShowBtn(false);
-  };
-  const handleDeleteModalClose = () => {
+  }, []);
+
+  const handleDeleteModalClose = useCallback(() => {
     setIsOpenDeleteModal(false);
-  };
+  }, []);
 
   return (
     <>

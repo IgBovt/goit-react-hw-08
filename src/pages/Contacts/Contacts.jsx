@@ -3,18 +3,22 @@ import ContactForm from '../../components/ContactForm/ContactForm';
 import ContactList from '../../components/ContactList/ContactsList';
 import { selectLoading } from '../../redux/contacts/selectors';
 import { useEffect } from 'react';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import { fetchContacts } from '../../redux/contacts/operations';
+import SearchBox from '../../components/SearchBox/SearchBox';
 import { Watch } from 'react-loader-spinner';
 import css from './Contacts.module.css';
-import SearchBox from '../../components/SearchBox/SearchBox';
 
 export default function Contacts() {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoading = useSelector(selectLoading);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <div>
