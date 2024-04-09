@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import css from './ContactsList.module.css';
 import Contact from '../Contact/Contact';
-import { filteredContacts } from '../../redux/contacts/slice';
+import { selectFilteredContacts } from '../../redux/contacts/selectors';
 
 export default function ContactList() {
-  const contacts = useSelector(filteredContacts);
+  const contacts = useSelector(selectFilteredContacts);
   const sortedContacts = contacts
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));

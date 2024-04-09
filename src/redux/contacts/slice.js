@@ -6,8 +6,6 @@ import {
   fetchContacts,
 } from './operations';
 import { logOut } from '../auth/operations';
-import { selectNameFilter, selectNumberFilter } from '../filters/selectors';
-import { selectAllContacts } from './selectors';
 
 const slice = createSlice({
   name: 'contacts',
@@ -74,16 +72,5 @@ const slice = createSlice({
         state.loading = false;
       }),
 });
-
-export const filteredContacts = createSelector(
-  [selectAllContacts, selectNameFilter, selectNumberFilter],
-  (contacts, filter) => {
-    return contacts.filter(
-      contact =>
-        contact.name.toLowerCase().includes(filter.toLowerCase()) ||
-        contact.number.includes(filter)
-    );
-  }
-);
 
 export default slice.reducer;
